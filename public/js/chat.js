@@ -10,14 +10,22 @@ const $messageScreen = document.querySelector('#messageScreen')
 // Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
 
+const myMessageTemplate = document.querySelector('#message-self-template').innerHTML
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
-
+const adminMessageTemplate = document.querySelector('#message-admin-template').innerHTML
 // Options
 const { username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
 
 socket.on('message',(messageObj)=>{
     // console.log(messageObj)
-    const html = Mustache.render(messageTemplate, {
+    let clientMessageTemplate = ''
+    if (!messageObj.username || messageObj.username === 'GupShup - Admin') {
+        clientMessageTemplate = adminMessageTemplate
+    } else {
+        clientMessageTemplate = (username === messageObj.username) ? myMessageTemplate:messageTemplate
+    }
+    // my message
+    const html = Mustache.render(clientMessageTemplate, {
         username : messageObj.username,
         message : messageObj.message,
         createdAt : moment(messageObj.createdAt).format('h:mm a')

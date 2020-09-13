@@ -115,7 +115,15 @@ button:disabled {
 /* Message Styles */
 
 .message {
-    margin-bottom: 16px;   
+    margin-bottom: 16px;
+}
+
+.mymessage {
+    text-align: right
+}
+
+.adminmessage {
+    text-align: center;
 }
 
 .message__name {

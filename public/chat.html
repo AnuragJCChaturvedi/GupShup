@@ -21,6 +21,27 @@
                 </div>
             </div>
         </div>
+
+        <script id = "message-self-template" type="text/html">
+            <div class="message mymessage" >
+                <p>
+                    <span class="message__name"> {{username}} </span>
+                    <span class="message__meta"> {{createdAt}} </span>
+                </p>
+                <p>{{message}}</p>
+            </div>
+        </script>
+
+        <script id = "message-admin-template" type="text/html">
+            <div class="message adminmessage" >
+                <p>
+                    <span class="message__name"> {{username}} </span>
+                    <span class="message__meta"> {{createdAt}} </span>
+                </p>
+                <p>{{message}}</p>
+            </div>
+        </script>
+
         <script id = "message-template" type="text/html">
             <div class="message">
                 <p>
